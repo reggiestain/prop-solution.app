@@ -33,7 +33,7 @@
     <preference name="LoadingDialog" value="Connecting...."/>
     <preference name="LoadingPageDialog" value="Page is loading"/>
     <!--<preference name="ErrorUrl" value="myErrorPage.html"/>-->
-    <preference name="ShowTitle" value="true"/>
+    <preference name="ShowTitle" value="false"/>
     <preference name="LogLevel" value="VERBOSE"/>
     <!--<preference name="SetFullscreen" value="false"/>-->
     <preference name="AndroidLaunchMode" value="singleTop"/>
