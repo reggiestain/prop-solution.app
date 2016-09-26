@@ -17,75 +17,116 @@
     </head>
     <body>        
         <div class="container">
-           <!--<div class="card card-container">-->
+            <!--<div class="card card-container">-->
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-           <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />-->
-           <p style="text-align: right;font-weight: bold">Version 1.0</p>
-           <img src="img/logo.png" class="img-responsive center-block"/>
-           <div class="col-lg-12">
-           <p id="profile-name" class="profile-name-card"></p>
-            <form class="form-signin">
-                <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                <div id="remember" class="checkbox">
-                    <!--<label>
-                        <input type="checkbox" value="remember-me"> Remember me
-                    </label>-->
-                </div>                                
-                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-                <button class="btn btn-lg btn-success btn-block btn-signin" type="submit">Sign in</button>
-            </form><!-- /form -->
-            <br>
-            <a href="#" class="forgot-password">
-                Forgot the password?
-            </a>   
-        </div>
-        <!-- /card-container</div> -->
-
-            <div class="col-md-4 col-md-offset-4">
-                <div class="material-button-anim">
-                    <ul class="list-inline" id="options">
-                        <li class="option">
-                            <button class="material-button option1" type="button">
-                                <span class="fa fa-phone" aria-hidden="true"></span>
-                            </button>
-                        </li>
-                        <li class="option">
-                            <button class="material-button option2" type="button">
-                                <span class="fa fa-envelope-o" aria-hidden="true"></span>
-                            </button>
-                        </li>
-                        <li class="option">
-                            <button class="material-button option3" type="button">
-                                <span class="fa fa-pencil" aria-hidden="true"></span>
-                            </button>
-                        </li>
-                    </ul>
-                    <button class="material-button material-button-toggle" type="button">
-                        <span class="fa fa-plus" aria-hidden="true"></span>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style=" z-index:999999999 !important">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">Contact Us</h4>
-                </div>
-                <div class="modal-body" align="center">
-                    <h5>Designed By Sharda Enterprises</h5>
-                    <h6>Powered By fastlearning.in</h6>
-                </div>
-                <div class="modal-footer"> <button type="button" class="close-btn" data-dismiss="modal">Close</button> </div>
+            <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />-->
+            <p style="text-align: right;font-weight: bold">Version 1.0</p>
+            <img src="img/logo.png" class="img-responsive center-block"/>
+            <div class="col-lg-12">
+                <p id="profile-name" class="profile-name-card"></p>
+                <form class="form-register" style="display: none">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="text" id="inputPhone" class="form-control" placeholder="Cell number" required autofocus><br>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <div id="remember" class="checkbox">
+                        <!--<label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>-->
+                    </div>                                
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Register</button>
+                    <a class="btn btn-lg btn-success btn-block toggle-1">Sign In</a>
+                </form><!-- /form -->
+                <form class="form-signin">
+                    <span id="reauth-email" class="reauth-email"></span>
+                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
+                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <div id="remember" class="checkbox">
+                        <div id="remember" class="checkbox">
+                            <a href="#" class="forgot-password">
+                                Forgot the password?
+                            </a> 
+                        </div>  
+                    </div>                                
+                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
+                    <a class="btn btn-lg btn-success btn-block toggle-1">Register</a>
+                </form><!-- /form -->                  
             </div>
         </div>
-    </div>
-    <script src="./js/jquery.min.js"></script> 
-    <script src="./js/custom.js"></script> 
-    <script src="./js/bootstrap.min.js"></script>
-</body>
+        <script type="text/javascript" src="/cordova.js"></script>
+        <script type="text/javascript" src="js/device-orientation/compass.js"></script>
+        <script type="text/javascript" src="js/jquery-mobile.js"></script>
+        <script src="js/jquery.min.js"></script>
+        <script>
+            
+            $(document).ready(function () {
+                function onSuccess(heading) {
+    var element = document.getElementById('heading');
+    element.innerHTML = 'Heading: ' + heading.magneticHeading;
+};
+                $('.toggle-1').click(function () {
+                    //$('.form-signin').hide();
+                    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+                });
+
+                $("#login").click(function () {
+                    var email = $("#email").val();
+                    var pass = $("#pass").val();
+                    var dataString = "&email=" + email + "&pass=" + pass + "&signin=";
+                    if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
+                        $.ajax({
+                            type: "POST",
+                            //url: '',
+                            data: dataString,
+                            crossDomain: true,
+                            cache: false,
+                            beforeSend: function () {
+                                // alert('Connecting...');
+                            },
+                            success: function (data) {
+                                if (data == "You are welcom.") {
+                                    alert("Thank you for Registering with us! you can login now");
+                                } else if (data = "exist") {
+                                    alert("Hey! You alreay has account! you can login with us");
+                                } else if (data = "failed") {
+                                    alert("Something Went wrong");
+                                }
+                            }
+                        });
+                    }
+                    return false;
+                });
+
+                $("#signup").click(function () {
+                    var email = $("#mail").val();
+                    var pass = $("#pas").val();
+                    var conpass = $("#conpas").val();
+                    var dataString = "&email=" + email + "&pass=" + pass + "&conpass=" + conpass + "&signin=";
+                    if ($.trim(email).length > 0 & $.trim(pass).length > 0 & $.trim(conpass).length > 0) {
+                        $.ajax({
+                            type: "POST",
+                            url: 'http://rilconsulting.co.za/users/signup',
+                            data: dataString,
+                            crossDomain: true,
+                            cache: false,
+                            beforeSend: function () {
+                                //alert('Connecting...');
+                            },
+                            success: function (data) {
+                                if (data = "alreadyregistered") {
+                                    alert("Sorry the email address has already been registered.");
+                                } else if (data = "exist") {
+                                    alert("Hey! You alreay has account! you can login with us");
+                                } else if (data = "failed") {
+                                    alert("Something Went wrong");
+                                }
+                            }
+                        });
+                    }
+                    return false;
+                });
+
+            });
+        </script> 
+    </body>
 </html>
