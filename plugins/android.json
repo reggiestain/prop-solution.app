@@ -11,5 +11,9 @@
             "PACKAGE_NAME": "com.coolappz.prop_solution"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "com.coolappz.prop_solution"
+        }
+    }
 }
