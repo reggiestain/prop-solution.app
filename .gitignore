@@ -1,5 +1,7 @@
 
-/flatforms/*
+/platforms/*
 /plugins/*
 /nbproject/* 
  
+/prop.android/gen/
+/prop.android/bin/

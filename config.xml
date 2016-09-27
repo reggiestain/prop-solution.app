@@ -7,7 +7,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <content src="index.html" />
+    <content src="main.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
     <allow-intent href="*" />
@@ -30,6 +30,7 @@
     <preference name="ShowTitle" value="false" />
     <preference name="LogLevel" value="VERBOSE" />
     <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="loadUrlTimeoutValue" value="700000" />
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="hdpi" src="res/android/hdpi.png" />

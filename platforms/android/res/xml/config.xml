@@ -14,7 +14,7 @@
     <author email="dev@cordova.apache.org" href="http://cordova.io">
         Apache Cordova Team
     </author>
-    <content src="index.html" />
+    <content src="main.html" />
     <access origin="*" />
     <allow-intent href="*" />
     <allow-intent href="http://*/*" />
@@ -39,5 +39,6 @@
     <preference name="ShowTitle" value="false" />
     <preference name="LogLevel" value="VERBOSE" />
     <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="loadUrlTimeoutValue" value="700000" />
     <preference name="android-minSdkVersion" value="24" />
 </widget>

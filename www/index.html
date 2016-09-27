@@ -37,7 +37,7 @@
                     <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Register</button>
                     <a class="btn btn-lg btn-success btn-block toggle-1">Sign In</a>
                 </form><!-- /form -->
-                <form class="form-signin">
+                <form id="login" class="form-signin">
                     <span id="reauth-email" class="reauth-email"></span>
                     <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
                     <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
@@ -54,22 +54,18 @@
             </div>
         </div>
         <script type="text/javascript" src="/cordova.js"></script>
-        <script type="text/javascript" src="js/device-orientation/compass.js"></script>
         <script type="text/javascript" src="js/jquery-mobile.js"></script>
         <script src="js/jquery.min.js"></script>
-        <script>
-            
-            $(document).ready(function () {
-                function onSuccess(heading) {
-    var element = document.getElementById('heading');
-    element.innerHTML = 'Heading: ' + heading.magneticHeading;
-};
+        <script>           
+            $(document).ready(function () {                
                 $('.toggle-1').click(function () {
                     //$('.form-signin').hide();
                     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
                 });
 
-                $("#login").click(function () {
+                $("#login").submit(function (e) {
+                    e.preventDefault();
+                    alert();
                     var email = $("#email").val();
                     var pass = $("#pass").val();
                     var dataString = "&email=" + email + "&pass=" + pass + "&signin=";
