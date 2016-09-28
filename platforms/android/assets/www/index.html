@@ -1,4 +1,22 @@
- <div class="container">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#0000FF">
+        <meta name="msapplication-navbutton-color" content="#0000FF">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#0000FF">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="stylesheet" type="text/css" href="./css/boot.css"/>
+        <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+        <link href="./css/navbar-fixed-top.css" rel="stylesheet">
+    </head>
+    <body>        
+        <div class="container">
             <!--<div class="card card-container">-->
             <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <!-- <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />-->
@@ -6,11 +24,11 @@
             <img src="img/logo.png" class="img-responsive center-block"/>
             <div class="col-lg-12">
                 <p id="profile-name" class="profile-name-card"></p>
-                <form class="form-register" style="display: none">
-                    <span id="reauth-email" class="reauth-email"></span>
-                    <input type="text" id="inputPhone" class="form-control" placeholder="Cell number" required autofocus><br>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <form id="signup" class="form-register" style="display: none">
+                    <span id="reauth-mail" class="reauth-email"></span>
+                    <input type="text" id="phone" class="form-control" placeholder="Cell number" required autofocus><br>
+                    <input type="email" id="mail" class="form-control" placeholder="Email address" required autofocus><br>
+                    <input type="password" id="pas" class="form-control" placeholder="Password" required>
                     <div id="remember" class="checkbox">
                         <!--<label>
                             <input type="checkbox" value="remember-me"> Remember me
@@ -21,8 +39,8 @@
                 </form><!-- /form -->
                 <form id="login" class="form-signin">
                     <span id="reauth-email" class="reauth-email"></span>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
                     <div id="remember" class="checkbox">
                         <div id="remember" class="checkbox">
                             <a href="#" class="forgot-password">
@@ -41,49 +59,48 @@
         <script>           
             $(document).ready(function () {                
                 $('.toggle-1').click(function () {
-                    //$('.form-signin').hide();
                     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
                 });
 
                 $("#login").submit(function (e) {
                     e.preventDefault();
-                    alert('hhhhh');
-                    var email = $("#email").val();
-                    var pass = $("#pass").val();
-                    var dataString = "&email=" + email + "&pass=" + pass + "&signin=";
-                    if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
+                    //alert('hhhhh');
+                    //var email = $("#email").val();
+                    //var pass = $("#pass").val();
+                   // var dataString = "&email=" + email + "&pass=" + pass + "&signin=";
+                    var dataString = $("#login").serialize();
+                    //if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
                         $.ajax({
                             type: "POST",
-                            //url: '',
+                            url: 'http://rilconsulting.co.za/users/applogin',
                             data: dataString,
                             crossDomain: true,
+                            async: false,
                             cache: false,
                             beforeSend: function () {
                                 // alert('Connecting...');
                             },
                             success: function (data) {
-                                if (data == "You are welcom.") {
+                                if (data = "admin") {
                                     alert("Thank you for Registering with us! you can login now");
-                                } else if (data = "exist") {
+                                } else if (data = "blocked") {
                                     alert("Hey! You alreay has account! you can login with us");
-                                } else if (data = "failed") {
+                                } else if (data = "error") {
                                     alert("Something Went wrong");
                                 }
                             }
                         });
-                    }
-                    return false;
                 });
 
                 $("#signup").click(function () {
                     var email = $("#mail").val();
                     var pass = $("#pas").val();
-                    var conpass = $("#conpas").val();
-                    var dataString = "&email=" + email + "&pass=" + pass + "&conpass=" + conpass + "&signin=";
-                    if ($.trim(email).length > 0 & $.trim(pass).length > 0 & $.trim(conpass).length > 0) {
+                    var phone = $("#phone").val();
+                    var dataString = "&email=" + email + "&pass=" + pass + "&phone=" + phone + "&signin=";
+                    if ($.trim(email).length > 0 & $.trim(pass).length > 0 & $.trim(phone).length > 0) {
                         $.ajax({
                             type: "POST",
-                            url: 'http://rilconsulting.co.za/users/signup',
+                            url: 'http://rilconsulting.co.za/users/appsignup',
                             data: dataString,
                             crossDomain: true,
                             cache: false,
@@ -106,3 +123,5 @@
 
             });
         </script> 
+    </body>
+</html>
