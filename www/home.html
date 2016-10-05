@@ -1,0 +1,373 @@
+
+<nav class="navbar navbar-default navbar-fixed-top navbar-md">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle sidebar-toggle left-menu-bar-btn"> 
+                <span class="icon-bar">
+                </span> 
+                <span class="icon-bar">
+                </span> 
+                <span class="icon-bar">
+                </span> </button> <a href="allsearch.html" class="transition"> <button type="button" class="navbar-toggle search-btn-onclick"> 
+                    <span class="glyphicon glyphicon-search">
+                    </span> </button> </a> 
+            <span class="navbar-brand" href="#">
+                <!--<img src="img/brand.svg" class="img-responsive logo"/>-->
+            </span> 
+            <div class="dropdown pull-right"> </div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav"> </ul>
+        </div>
+    </div>
+</nav>
+<div class="sidebar-overlay"></div>
+<aside id="sidebar" class="sidebar sidebar-default sidebar-fixed-left" role="navigation">
+    <div> <img src="img/brand-black.svg" class="img-responsive left-logo"/> </div>
+    <ul class="nav sidebar-nav">
+        <li> <a href="about.html" class="transition"> 
+                <span class="glyphicon glyphicon-user">
+                </span>&nbsp; About Us </a> 
+        </li>
+        <li> <a href="#" data-toggle="modal" data-target="#contact"> 
+                <span class="glyphicon glyphicon-earphone">
+                </span>&nbsp; Contact Us </a> 
+        </li>
+        <li class="divider"></li>
+        <li class="dropdown">
+            <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-list-alt">
+                </span>&nbsp; Tutorials<b class="caret"></b></a> 
+            <ul class="dropdown-menu ac-act-dropdown-menu">
+                <li><a href="t1.html" class="transition">Introduction</a></li>
+                <li><a href="t2.html" class="transition">Basic Syntax</a></li>
+                <li><a href="t3.html" class="transition">Static Keywords</a></li>
+                <li><a href="t4.html" class="transition">Header File</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-pencil">
+                </span>&nbsp; Programs<b class="caret"></b></a> 
+            <ul class="dropdown-menu ac-act-dropdown-menu">
+                <li><a href="patterns.html" class="transition">Pattern Programs</a></li>
+                <li><a href="sprlist.html" class="transition">String Programs</a></li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a class="ripple-effect dropdown-toggle" href="#" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-question-sign">
+                </span>&nbsp; Quizes<b class="caret"></b></a> 
+            <ul class="dropdown-menu ac-act-dropdown-menu">
+                <li><a href="cplus-quiz.html" class="transition">Practice Quiz 1</a></li>
+            </ul>
+        </li>
+    </ul>
+</aside>
+<div class="container" style="overflow-y: scroll;">
+    <div class="row" style="margin-top:15px; padding:5px;">
+        <!-- Nav tabs --><div class="card">
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Compliants</a></li>
+                <!--<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>-->
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Profile</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Notifications</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <div class="comp-msg"></div> 
+                    <div id="index">
+
+                    </div><!-- /container -->                        
+                    <div class="col-md-2 col-md-offset-2">
+                        <button type="button" class="btn btn-primary btn-circle btn-lg" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-pencil"></i></button>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">
+
+                </div>
+                <!--<div role="tabpanel" class="tab-pane" id="settings"> 
+                </div>-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--view Modal -->        
+<div class="modal fade" id="viewModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title" id="myModalLabel">Complaint Details</h2>
+            </div>
+            <form >
+                <div class="modal-body" id="comp-detail">               
+
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    -->
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>         
+<!--reply Modal -->        
+<div class="modal fade" id="replyModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title" id="myModalLabel">Reply To Complaint</h2>
+            </div>
+            <form id="reply-form" action="#">
+                <div class="modal-body">               
+                    <input type="hidden" class="form-control" name="complaint_id" id="comp-id" value="">  
+                    <input type="hidden" class="form-control" name="tenant_id" id="tenant-id" value="">
+                    <input type="hidden" class="form-control" name="type" value="Reply">
+                    <!--<div class="form-group">
+                        <label for="email">Rating</label>
+                        <select class="form-control" name="rating">
+                            <option value='1 Star'>1 Star</option>
+                            <option value='1 Star'>2 Star</option>
+                            <option value='1 Star'>3 Star</option>
+                            <option value='--Choose One--' selected>--Choose One--</option>
+                        </select>
+                    </div>-->
+                    <div class="form-group">
+                        <label for="email">Comment</label>
+                        <textarea class="form-control" name="comment" required></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>        
+<!--approve Modal -->        
+<div class="modal fade" id="approveModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title" id="myModalLabel">Approve Complaint</h2>
+            </div>
+            <form id="approve-form">
+                <div class="modal-body">               
+                    <input type="hidden" class="form-control" name="complaint_id" id="comp-id" value="">  
+                    <input type="hidden" class="form-control" name="type" value="Approved">
+                    <div class="form-group">
+                        <label for="email">Rating</label>
+                        <select class="form-control" name="rating">
+                            <option value='1 Star'>1 Star</option>
+                            <option value='1 Star'>2 Star</option>
+                            <option value='1 Star'>3 Star</option>
+                            <option value='--Choose One--' selected>--Choose One--</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Comment</label>
+                        <textarea class="form-control" name="comment"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>              
+<!--complaint Modal -->
+<div class="modal fade" id="myModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h2 class="modal-title" id="myModalLabel">Complaint</h2>
+            </div>
+            <form id="comp-form">
+                <div class="modal-body">               
+                    <input type="hidden" class="form-control" name="user_id" id="user" value="">   
+                    <input type="hidden" class="form-control" name="tenant_id" id="tenantid" value="">
+                    <input type="hidden" class="form-control" name="property_id" id="prop" value="">
+                    <div class="form-group">
+                        <label for="email">Compliant Type</label>
+                        <select class="form-control" name="compliant_type">
+                            <option value='Plumbing'>Plumbing</option>
+                            <option value='Geyser'>Geyser</option>
+                            <option value='Roofing'>Roofing</option>
+                            <option value='--Choose One--' selected>--Choose One--</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Compliant Priority</label>
+                        <select class="form-control" name="priority">
+                            <option value='Urgent'>Urgent</option>
+                            <option value='Medium'>Medium</option>
+                            <option value='Low'>Low</option>
+                            <option value='--Choose One--' selected>--Choose One--</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Compliant Description</label>
+                        <textarea class="form-control" name="compliant"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>        
+<div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style=" z-index:999999999 !important">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Contact Us</h4>
+            </div>
+            <div class="modal-body" align="center">
+                <h5>Designed By Sharda Enterprises</h5>
+                <h6>Powered By fastlearning.in</h6>
+            </div>
+            <div class="modal-footer"> <button type="button" class="close-btn" data-dismiss="modal">Close</button> </div>
+        </div>
+    </div>
+</div>
+<script src="./js/custom.js"></script> 
+<script>
+    $.ajax({
+        url: "http://localhost/prop-solution/users/complaints",
+        async: false,
+        beforeSend: function () {
+            $("#index").html('<p>Loading.......</p>');
+        },
+    }).done(function (result) {
+        $("#index").html(result);
+    });
+
+    $(document).on("click", ".fa-check", function () {
+        var id = $(this).attr('data');
+        $("#comp-id").val(id);
+        $("#approveModal").modal();
+    });
+
+    $(document).on("click", ".fa-reply", function () {
+        var id = $(this).attr('data');
+        var tenantid = $(this).attr('tenant');
+        $("#comp-id").val(id);
+        $("#tenant-id").val(tenantid);
+        $("#replyModal").modal();
+    });
+
+    $(document).on("click", ".fa-eye", function () {
+        var id = $(this).attr('data');
+        $.ajax({
+            url: "http://localhost/prop-solution/users/view_complaint/"+id,
+            async: false,
+            beforeSend: function () {
+                $("#comp-detail").html('<p>Loading.......</p>');
+            },
+        }).done(function (result) {            
+            $("#comp-detail").html(result);
+            $("#viewModal").modal();
+        });       
+    });
+    
+    $("#comp-form").submit(function (e) {
+        e.preventDefault();
+        var dataString = $("#comp-form").serialize();
+        //if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
+        $.ajax({
+            type: "POST",
+            url: 'http://localhost/prop-solution/users/addcomplaint',
+            data: dataString,
+            crossDomain: true,
+            async: false,
+            cache: false,
+            beforeSend: function () {
+                $body = $("body");
+                $body.addClass("loading");
+            },
+            success: function (data, status, xhr) {
+                var json = JSON.parse(data);
+                if (json.success === 'success') {
+                    $body = $("body");
+                    $body.removeClass("loading");
+                    $("#myModal").toggle();
+                    $.ajax({
+                        url: "http://rilconsulting.co.za/users/complaints",
+                        async: false
+                    }).done(function (result) {
+                        $("#index").html(result);
+                    });
+                    $(".comp-msg").html('<div class="alert alert-success"><strong>Success!</strong> Complaint has been submitted successfully.</div>');
+                }
+                if (json.msg === 'error') {
+                    $body = $("body");
+                    $body.removeClass("loading");
+                    $(".comp-msg").html('<div class="alert alert-danger"><strong>Error!</strong> Incorrect email or password.</div>');
+                }
+            },
+            error: function (data, status, xhr) {
+                $body = $("body");
+                $body.removeClass("loading");
+                $(".comp-msg").html('<div class="alert alert-warning"><strong>Error!</strong> Please check your internet connection.</div>');
+            }
+        });
+    });
+    
+    $(document).on('submit','#reply-form',function(e) {
+        e.preventDefault();
+        var dataString = $("#reply-form").serialize();
+        //if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
+        $.ajax({
+            type: "POST",
+            url: 'http://localhost/prop-solution/users/compliant_reply',
+            data: dataString,
+            crossDomain: true,
+            async: false,
+            cache: false,
+            beforeSend: function () {
+                $body = $("body");
+                $body.addClass("loading");
+            },
+            success: function (data, status, xhr) { 
+                var json = JSON.parse(data);
+                if (json.success === 'success') {
+                    $(".comp-msg").html('<div class="alert alert-success"><strong>Success!</strong> Comment has been submitted successfully.</div>');
+            }
+            },        
+            error: function (data, status, xhr) {
+                $(".comp-msg").html('<div class="alert alert-warning"><strong>Error!</strong>An error occured, please try again.</div>');
+            }
+        });
+    });
+
+    //$('#myTable').DataTable({
+    //responsive: true
+    //});
+
+</script>
