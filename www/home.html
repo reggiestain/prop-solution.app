@@ -1,5 +1,4 @@
-
-<nav class="navbar navbar-default navbar-fixed-top navbar-md">
+<nav class="navbar navbar-default navbar-fixed-top navbar-md" style="padding-top: 20px">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle sidebar-toggle left-menu-bar-btn"> 
@@ -8,9 +7,12 @@
                 <span class="icon-bar">
                 </span> 
                 <span class="icon-bar">
-                </span> </button> <a href="allsearch.html" class="transition"> <button type="button" class="navbar-toggle search-btn-onclick"> 
+                </span> 
+            </button> 
+            <!--<a href="allsearch.html" class="transition"> <button type="button" class="navbar-toggle search-btn-onclick"> 
                     <span class="glyphicon glyphicon-search">
-                    </span> </button> </a> 
+                    </span> </button> 
+            </a>--> 
             <span class="navbar-brand" href="#">
                 <!--<img src="img/brand.svg" class="img-responsive logo"/>-->
             </span> 
@@ -66,12 +68,12 @@
 </aside>
 <div class="container" style="overflow-y: scroll;">
     <div class="row" style="margin-top:15px; padding:5px;">
-        <!-- Nav tabs --><div class="card">
+        <!-- Nav tabs --><div class="card" style="margin-top: 15px">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Compliants</a></li>
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><b>Property</b></a></li>
                 <!--<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>-->
-                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Profile</a></li>
-                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Notifications</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><b>Profile</b></a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><b>Notifications</b></a></li>
             </ul>
 
             <!-- Tab panes -->
@@ -81,9 +83,6 @@
                     <div id="index">
 
                     </div><!-- /container -->                        
-                    <div class="col-md-2 col-md-offset-2">
-                        <button type="button" class="btn btn-primary btn-circle btn-lg" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-pencil"></i></button>
-                    </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="profile">
 
@@ -105,7 +104,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h2 class="modal-title" id="myModalLabel">Complaint Details</h2>
+                <h4 class="modal-title" id="myModalLabel">Complaint Details</h4>
             </div>
             <form >
                 <div class="modal-body" id="comp-detail">               
@@ -128,7 +127,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h2 class="modal-title" id="myModalLabel">Reply To Complaint</h2>
+                <h4 class="modal-title" id="myModalLabel">Reply To Complaint</h4>
             </div>
             <form id="reply-form" action="#">
                 <div class="modal-body">               
@@ -148,7 +147,6 @@
                         <label for="email">Comment</label>
                         <textarea class="form-control" name="comment" required></textarea>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -166,7 +164,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h2 class="modal-title" id="myModalLabel">Approve Complaint</h2>
+                <h4 class="modal-title" id="myModalLabel">Approve Complaint</h4>
             </div>
             <form id="approve-form">
                 <div class="modal-body">               
@@ -203,16 +201,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h2 class="modal-title" id="myModalLabel">Complaint</h2>
+                <h4 class="modal-title" id="myModalLabel">Complaint</h4>
             </div>
             <form id="comp-form">
                 <div class="modal-body">               
                     <input type="hidden" class="form-control" name="user_id" id="user" value="">   
-                    <input type="hidden" class="form-control" name="tenant_id" id="tenantid" value="">
+                    <input type="hidden" class="form-control" name="tenant_id"  id="tenantid" value="">
                     <input type="hidden" class="form-control" name="property_id" id="prop" value="">
                     <div class="form-group">
                         <label for="email">Compliant Type</label>
-                        <select class="form-control" name="compliant_type">
+                        <select class="form-control" name="complaint_type">
                             <option value='Plumbing'>Plumbing</option>
                             <option value='Geyser'>Geyser</option>
                             <option value='Roofing'>Roofing</option>
@@ -230,7 +228,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Compliant Description</label>
-                        <textarea class="form-control" name="compliant"></textarea>
+                        <textarea class="form-control" name="complaint"></textarea>
                     </div>
 
                 </div>
@@ -258,16 +256,6 @@
 </div>
 <script src="./js/custom.js"></script> 
 <script>
-    $.ajax({
-        url: "http://localhost/prop-solution/users/complaints",
-        async: false,
-        beforeSend: function () {
-            $("#index").html('<p>Loading.......</p>');
-        },
-    }).done(function (result) {
-        $("#index").html(result);
-    });
-
     $(document).on("click", ".fa-check", function () {
         var id = $(this).attr('data');
         $("#comp-id").val(id);
@@ -285,24 +273,54 @@
     $(document).on("click", ".fa-eye", function () {
         var id = $(this).attr('data');
         $.ajax({
-            url: "http://localhost/prop-solution/users/view_complaint/"+id,
+            url: "http://3damazing.co.za/users/appview_complaint/" + id,
             async: false,
             beforeSend: function () {
                 $("#comp-detail").html('<p>Loading.......</p>');
             },
-        }).done(function (result) {            
+        }).done(function (result) {
             $("#comp-detail").html(result);
             $("#viewModal").modal();
-        });       
+        });
+    });
+
+    $(document).on("click", "#comp-index", function () {
+        var id = $(this).attr('data');
+        $('.left-menu-bar-btn').hide();
+        $('.navbar-header').html('<button id="'+id+'"class="navbar-toggle sidebar-toggle left-menu-bar-btn p-home"><span class="glyphicon glyphicon-arrow-left gi-2x"></span></button>');
+        $.ajax({
+            url: "http://3damazing.co.za/users/appcomplaints/" + id,
+            async: false,
+            beforeSend: function () {
+                $("#index").html('<p>Loading.......</p>');
+            },
+        }).done(function (result) {
+            $("#index").html('<span class="fa fa-spinner"></span>');
+            $("#index").html(result);
+        });
     });
     
+    $(document).on("click", ".p-home", function () {
+        var tenant = $(this).attr('id');
+        $('.navbar-header').html('<button class="navbar-toggle sidebar-toggle left-menu-bar-btn"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>');
+        $.ajax({
+            url: "http://3damazing.co.za/users/app_property/" +tenant,
+            async: false,
+            beforeSend: function () {
+                $("#index").html('<p>Loading.......</p>');
+            },
+        }).done(function (result) {
+            $("#index").html(result);
+        });
+    });
+
     $("#comp-form").submit(function (e) {
         e.preventDefault();
         var dataString = $("#comp-form").serialize();
         //if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
         $.ajax({
             type: "POST",
-            url: 'http://localhost/prop-solution/users/addcomplaint',
+            url: 'http://3damazing.co.za/users/addcomplaint',
             data: dataString,
             crossDomain: true,
             async: false,
@@ -318,7 +336,7 @@
                     $body.removeClass("loading");
                     $("#myModal").toggle();
                     $.ajax({
-                        url: "http://rilconsulting.co.za/users/complaints",
+                        url: "http://3damazing.co.za/users/complaints",
                         async: false
                     }).done(function (result) {
                         $("#index").html(result);
@@ -338,14 +356,14 @@
             }
         });
     });
-    
-    $(document).on('submit','#reply-form',function(e) {
+
+    $(document).on('submit', '#reply-form', function (e) {
         e.preventDefault();
         var dataString = $("#reply-form").serialize();
         //if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
         $.ajax({
             type: "POST",
-            url: 'http://localhost/prop-solution/users/compliant_reply',
+            url: 'http://3damazing.co.za/users/appcompliant_reply',
             data: dataString,
             crossDomain: true,
             async: false,
@@ -354,12 +372,12 @@
                 $body = $("body");
                 $body.addClass("loading");
             },
-            success: function (data, status, xhr) { 
+            success: function (data, status, xhr) {
                 var json = JSON.parse(data);
                 if (json.success === 'success') {
                     $(".comp-msg").html('<div class="alert alert-success"><strong>Success!</strong> Comment has been submitted successfully.</div>');
-            }
-            },        
+                }
+            },
             error: function (data, status, xhr) {
                 $(".comp-msg").html('<div class="alert alert-warning"><strong>Error!</strong>An error occured, please try again.</div>');
             }

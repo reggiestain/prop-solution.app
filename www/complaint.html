@@ -1,5 +1,4 @@
-
-<nav class="navbar navbar-default navbar-fixed-top navbar-md" style="margin-top: 20px">
+<nav class="navbar navbar-default navbar-fixed-top navbar-md" style="padding-top: 20px">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle sidebar-toggle left-menu-bar-btn"> 
@@ -23,7 +22,7 @@
 </nav>
 <div class="sidebar-overlay"></div>
 <aside id="sidebar" class="sidebar sidebar-default sidebar-fixed-left" role="navigation">
-    <div> <!--<img src="img/brand-black.svg" class="img-responsive left-logo"/>--> </div>
+    <div> <img src="img/brand-black.svg" class="img-responsive left-logo"/> </div>
     <ul class="nav sidebar-nav">
         <li> <a href="about.html" class="transition"> 
                 <span class="glyphicon glyphicon-user">
@@ -64,31 +63,7 @@
         </li>
     </ul>
 </aside>
-<style> 
-    .modal {
-        display:    none;
-        position:   fixed;
-        z-index:    1000;
-        top:        0;
-        left:       0;
-        height:     100%;
-        width:      100%;
-        background: rgba( 255, 255, 255, .8 ) 
-            url('./img/load.gif') 
-            50% 50% 
-            no-repeat;
-    }
-    body.loading {
-        overflow: hidden;   
-    }
-
-    /* Anytime the body has the loading class, our
-       modal element will be visible */
-    body.loading .modal {
-        display: block;
-    }   
-</style>
-<div class="container">
+<div class="container" style="overflow-y: scroll;">
     <div class="row" style="margin-top:15px; padding:5px;">
         <!-- Nav tabs --><div class="card">
             <ul class="nav nav-tabs" role="tablist">
@@ -105,8 +80,8 @@
                     <div id="index">
 
                     </div><!-- /container -->                        
-                    <div class="col-md-2 col-md-offset-2">
-                        <button type="button" class="btn btn-success btn-circle btn-lg" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-pencil"></i></button>
+                    <div class="col-md-2 col-md-offset-2" style="position: fixed">
+                        <button type="button" class="btn btn-primary btn-circle btn-lg" data-toggle="modal" data-target="#myModal"><i class="glyphicon glyphicon-pencil"></i></button>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="profile">
@@ -121,7 +96,104 @@
         </div>
     </div>
 </div>
-<!-- Modal -->
+<!--view Modal -->        
+<div class="modal fade" id="viewModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Complaint Details</h4>
+            </div>
+            <form >
+                <div class="modal-body" id="comp-detail">               
+
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    -->
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>         
+<!--reply Modal -->        
+<div class="modal fade" id="replyModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Reply To Complaint</h4>
+            </div>
+            <form id="reply-form" action="#">
+                <div class="modal-body">               
+                    <input type="hidden" class="form-control" name="complaint_id" id="comp-id" value="">  
+                    <input type="hidden" class="form-control" name="tenant_id" id="tenant-id" value="">
+                    <input type="hidden" class="form-control" name="type" value="Reply">
+                    <!--<div class="form-group">
+                        <label for="email">Rating</label>
+                        <select class="form-control" name="rating">
+                            <option value='1 Star'>1 Star</option>
+                            <option value='1 Star'>2 Star</option>
+                            <option value='1 Star'>3 Star</option>
+                            <option value='--Choose One--' selected>--Choose One--</option>
+                        </select>
+                    </div>-->
+                    <div class="form-group">
+                        <label for="email">Comment</label>
+                        <textarea class="form-control" name="comment" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>        
+<!--approve Modal -->        
+<div class="modal fade" id="approveModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Approve Complaint</h4>
+            </div>
+            <form id="approve-form">
+                <div class="modal-body">               
+                    <input type="hidden" class="form-control" name="complaint_id" id="comp-id" value="">  
+                    <input type="hidden" class="form-control" name="type" value="Approved">
+                    <div class="form-group">
+                        <label for="email">Rating</label>
+                        <select class="form-control" name="rating">
+                            <option value='1 Star'>1 Star</option>
+                            <option value='1 Star'>2 Star</option>
+                            <option value='1 Star'>3 Star</option>
+                            <option value='--Choose One--' selected>--Choose One--</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Comment</label>
+                        <textarea class="form-control" name="comment"></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form> 
+        </div>
+    </div>
+</div>              
+<!--complaint Modal -->
 <div class="modal fade" id="myModal" data-backdrop="false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -129,16 +201,16 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
-                <h2 class="modal-title" id="myModalLabel">Complaint</h2>
+                <h4 class="modal-title" id="myModalLabel">Complaint</h4>
             </div>
             <form id="comp-form">
                 <div class="modal-body">               
                     <input type="hidden" class="form-control" name="user_id" id="user" value="">   
-                    <input type="hidden" class="form-control" name="tenant_id" id="tenantid" value="">
+                    <input type="hidden" class="form-control" name="tenant_id"  id="tenantid" value="">
                     <input type="hidden" class="form-control" name="property_id" id="prop" value="">
                     <div class="form-group">
                         <label for="email">Compliant Type</label>
-                        <select class="form-control" name="compliant_type">
+                        <select class="form-control" name="complaint_type">
                             <option value='Plumbing'>Plumbing</option>
                             <option value='Geyser'>Geyser</option>
                             <option value='Roofing'>Roofing</option>
@@ -156,7 +228,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Compliant Description</label>
-                        <textarea class="form-control" name="compliant"></textarea>
+                        <textarea class="form-control" name="complaint"></textarea>
                     </div>
 
                 </div>
@@ -167,7 +239,7 @@
             </form> 
         </div>
     </div>
-</div>
+</div>        
 <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style=" z-index:999999999 !important">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -182,23 +254,60 @@
         </div>
     </div>
 </div>
-
+<script src="./js/custom.js"></script> 
 <script>
-
-    $.ajax({
-        url: "http://localhost/prop-solution/users/compliants",
-        async: false
-    }).done(function (result) {
-        $("#index").html('<p>Loading.......</p>');
-        $("#index").html(result);
+        var tenantid = $('#user').val();    
+        var t = document.getElementById('tenantid').value;
+        $.ajax({
+            type: "POST",
+            url: "http://3damazing.co.za/users/appcomplaints/"+t,
+            async: false,
+            beforeSend: function () {
+                $("#index").html('<p>Loading.......</p>');
+            },
+        success: function (result, status, xhr) {
+            $("#index").html(result);
+        },
+        error: function (data, status, xhr) {
+          alert(xhr);  
+        }
     });
+    
+    $(document).on("click", ".fa-check", function () {
+        var id = $(this).attr('data');
+        $("#comp-id").val(id);
+        $("#approveModal").modal();
+    });
+
+    $(document).on("click", ".fa-reply", function () {
+        var id = $(this).attr('data');
+        var tenantid = $(this).attr('tenant');
+        $("#comp-id").val(id);
+        $("#tenant-id").val(tenantid);
+        $("#replyModal").modal();
+    });
+
+    $(document).on("click", ".fa-eye", function () {
+        var id = $(this).attr('data');
+        $.ajax({
+            url: "http://3damazing.co.za/users/view_complaint/" + id,
+            async: false,
+            beforeSend: function () {
+                $("#comp-detail").html('<p>Loading.......</p>');
+            },
+        }).done(function (result) {
+            $("#comp-detail").html(result);
+            $("#viewModal").modal();
+        });
+    });
+
     $("#comp-form").submit(function (e) {
         e.preventDefault();
         var dataString = $("#comp-form").serialize();
         //if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
         $.ajax({
             type: "POST",
-            url: 'http://localhost/prop-solution/users/addcompliant',
+            url: 'http://3damazing.co.za/users/addcomplaint',
             data: dataString,
             crossDomain: true,
             async: false,
@@ -214,7 +323,7 @@
                     $body.removeClass("loading");
                     $("#myModal").toggle();
                     $.ajax({
-                        url: "http://rilconsulting.co.za/users/compliants",
+                        url: "http://3damazing.co.za/users/complaints",
                         async: false
                     }).done(function (result) {
                         $("#index").html(result);
@@ -231,6 +340,33 @@
                 $body = $("body");
                 $body.removeClass("loading");
                 $(".comp-msg").html('<div class="alert alert-warning"><strong>Error!</strong> Please check your internet connection.</div>');
+            }
+        });
+    });
+
+    $(document).on('submit', '#reply-form', function (e) {
+        e.preventDefault();
+        var dataString = $("#reply-form").serialize();
+        //if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
+        $.ajax({
+            type: "POST",
+            url: 'http://3damazing.co.za/users/compliant_reply',
+            data: dataString,
+            crossDomain: true,
+            async: false,
+            cache: false,
+            beforeSend: function () {
+                $body = $("body");
+                $body.addClass("loading");
+            },
+            success: function (data, status, xhr) {
+                var json = JSON.parse(data);
+                if (json.success === 'success') {
+                    $(".comp-msg").html('<div class="alert alert-success"><strong>Success!</strong> Comment has been submitted successfully.</div>');
+                }
+            },
+            error: function (data, status, xhr) {
+                $(".comp-msg").html('<div class="alert alert-warning"><strong>Error!</strong>An error occured, please try again.</div>');
             }
         });
     });

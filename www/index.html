@@ -19,6 +19,9 @@
     </head>    
     <body>
         <style> 
+            .glyphicon{
+              font-size: 50px;  
+            }
             .modal {
                 display:    none;
                 position:   fixed;
@@ -101,7 +104,7 @@
                     //if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
                     $.ajax({
                         type: "POST",
-                        url: 'http://localhost/prop-solution/users/applogin',
+                        url: 'http://3damazing.co.za/users/applogin',
                         data: dataString,
                         crossDomain: true,
                         async: false,
@@ -109,15 +112,32 @@
                         beforeSend: function () {
                             $body = $("body");
                             $body.addClass("loading");
+
                         },
                         success: function (data, status, xhr) {
                             var json = JSON.parse(data);
                             if (json.tenant === 'tenant') {
                                 $('#log-div').hide();
                                 $('body').load('home.html', function () {
+                                    //$('.left-menu-bar-btn').html('<span class="glyphicon glyphicon-arrow-left"></span>');
+                                    var tenant = json.tenantid;
                                     $("#user").val(json.user);
                                     $("#tenantid").val(json.tenantid);
                                     $("#prop").val(json.prop);
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "http://3damazing.co.za/users/app_property/" + tenant,
+                                        async: false,
+                                        beforeSend: function () {
+                                            $("#index").html('<span class="fa fa-spinner"></span>');                                            
+                                        },
+                                        success: function (result, status, xhr) {
+                                            $("#index").html(result);
+                                        },
+                                        error: function (data, status, xhr) {
+                                            alert(xhr);
+                                        }
+                                    });
                                 });
                             }
 
@@ -144,7 +164,7 @@
                     if ($.trim(email).length > 0 & $.trim(pass).length > 0 & $.trim(phone).length > 0) {
                         $.ajax({
                             type: "POST",
-                            url: 'http://rilconsulting.co.za/users/appsignup',
+                            url: 'http://3damazing.co.za/users/appsignup',
                             data: dataString,
                             crossDomain: true,
                             cache: false,
