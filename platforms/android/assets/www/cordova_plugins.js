@@ -88,6 +88,38 @@ module.exports = [
             "navigator.notification",
             "navigator"
         ]
+    },
+    {
+        "id": "it.mobimentum.phonegapspinnerplugin.SpinnerPlugin",
+        "file": "plugins/it.mobimentum.phonegapspinnerplugin/www/spinnerplugin.js",
+        "pluginId": "it.mobimentum.phonegapspinnerplugin",
+        "clobbers": [
+            "window.spinnerplugin"
+        ]
+    },
+    {
+        "id": "cordova-plugin-spinner.SpinnerPlugin",
+        "file": "plugins/cordova-plugin-spinner/www/spinner-plugin.js",
+        "pluginId": "cordova-plugin-spinner",
+        "clobbers": [
+            "SpinnerPlugin"
+        ]
+    },
+    {
+        "id": "cordova-plugin-screen-orientation.screenorientation",
+        "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.js",
+        "pluginId": "cordova-plugin-screen-orientation",
+        "clobbers": [
+            "cordova.plugins.screenorientation"
+        ]
+    },
+    {
+        "id": "cordova-plugin-screen-orientation.screenorientation.android",
+        "file": "plugins/cordova-plugin-screen-orientation/www/screenorientation.android.js",
+        "pluginId": "cordova-plugin-screen-orientation",
+        "merges": [
+            "cordova.plugins.screenorientation"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -99,7 +131,10 @@ module.exports.metadata =
     "cordova-plugin-device-orientation": "1.0.5-dev",
     "cordova-plugin-dialogs": "1.3.0",
     "cordova-plugin-whitelist": "1.3.0",
-    "cordova-plugin-vibration": "2.1.2"
+    "cordova-plugin-vibration": "2.1.2",
+    "it.mobimentum.phonegapspinnerplugin": "1.2.1",
+    "cordova-plugin-spinner": "1.1.0",
+    "cordova-plugin-screen-orientation": "1.4.2"
 };
 // BOTTOM OF METADATA
 });

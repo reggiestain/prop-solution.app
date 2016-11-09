@@ -19,6 +19,15 @@
     <feature name="Vibration">
         <param name="android-package" value="org.apache.cordova.vibration.Vibration" />
     </feature>
+    <feature name="SpinnerPlugin">
+        <param name="android-package" value="it.mobimentum.phonegapspinnerplugin.SpinnerPlugin" />
+    </feature>
+    <feature name="SpinnerPlugin">
+        <param name="android-package" value="net.justin_credible.cordova.SpinnerPlugin" />
+    </feature>
+    <feature name="YoikScreenOrientation">
+        <param name="android-package" value="net.yoik.cordova.plugins.screenorientation.YoikScreenOrientation" />
+    </feature>
     <name>Prop Solution</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.

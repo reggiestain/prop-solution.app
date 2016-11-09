@@ -25,7 +25,7 @@
 </nav>
 <div class="sidebar-overlay"></div>
 <aside id="sidebar" class="sidebar sidebar-default sidebar-fixed-left" role="navigation">
-    <div> <img src="img/brand-black.svg" class="img-responsive left-logo"/> </div>
+    <!--<div> <img src="img/brand-black.svg" class="img-responsive left-logo"/> </div>-->
     <ul class="nav sidebar-nav">
         <li> <a href="about.html" class="transition"> 
                 <span class="glyphicon glyphicon-user">
@@ -72,7 +72,7 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab"><b>Property</b></a></li>
                 <!--<li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>-->
-                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab"><b>Profile</b></a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab"><b>Profile</b></a></li>
                 <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab"><b>Notifications</b></a></li>
             </ul>
 
@@ -87,10 +87,10 @@
                 <div role="tabpanel" class="tab-pane" id="profile">
 
                 </div>
-                <div role="tabpanel" class="tab-pane" id="messages">
+                <div role="tabpanel" class="tab-pane" id="settings">
 
                 </div>
-                <!--<div role="tabpanel" class="tab-pane" id="settings"> 
+                <!--<div role="tabpanel" class="tab-pane" id="messages"> 
                 </div>-->
             </div>
         </div>
@@ -254,8 +254,13 @@
         </div>
     </div>
 </div>
+
 <script src="./js/custom.js"></script> 
 <script>
+    $(document).on("click", ".menu-bar", function () {
+        $(".sidebar-overlay").toggleClass("active");
+        $(".sidebar").addClass("open");
+    });
     $(document).on("click", ".fa-check", function () {
         var id = $(this).attr('data');
         $("#comp-id").val(id);
@@ -276,9 +281,11 @@
             url: "http://3damazing.co.za/users/appview_complaint/" + id,
             async: false,
             beforeSend: function () {
-                $("#comp-detail").html('<p>Loading.......</p>');
+                var options = {dimBackground: true};
+                SpinnerPlugin.activityStart("Loading.....");
             },
         }).done(function (result) {
+            SpinnerPlugin.activityStop();
             $("#comp-detail").html(result);
             $("#viewModal").modal();
         });
@@ -287,29 +294,32 @@
     $(document).on("click", "#comp-index", function () {
         var id = $(this).attr('data');
         $('.left-menu-bar-btn').hide();
-        $('.navbar-header').html('<button id="'+id+'"class="navbar-toggle sidebar-toggle left-menu-bar-btn p-home"><span class="glyphicon glyphicon-arrow-left gi-2x"></span></button>');
+        $('.navbar-header').html('<button id="' + id + '"class="navbar-toggle sidebar-toggle left-menu-bar-btn p-home"><span class="glyphicon glyphicon-arrow-left gi-2x"></span></button> <button class="navbar-toggle sidebar-toggle right-menu-bar-btn menu-bar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>');
         $.ajax({
             url: "http://3damazing.co.za/users/appcomplaints/" + id,
             async: false,
             beforeSend: function () {
-                $("#index").html('<p>Loading.......</p>');
+                SpinnerPlugin.activityStart("Loading.....");
             },
         }).done(function (result) {
-            $("#index").html('<span class="fa fa-spinner"></span>');
+            SpinnerPlugin.activityStop();
             $("#index").html(result);
         });
     });
-    
+
     $(document).on("click", ".p-home", function () {
         var tenant = $(this).attr('id');
-        $('.navbar-header').html('<button class="navbar-toggle sidebar-toggle left-menu-bar-btn"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>');
+        $(".sidebar-overlay").removeClass("active");
+        $(".sidebar").removeClass("open");
+        $('.navbar-header').html('<button class="navbar-toggle sidebar-toggle left-menu-bar-btn menu-bar"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>');
         $.ajax({
-            url: "http://3damazing.co.za/users/app_property/" +tenant,
+            url: "http://3damazing.co.za/users/app_property/" + tenant,
             async: false,
             beforeSend: function () {
-                $("#index").html('<p>Loading.......</p>');
+                SpinnerPlugin.activityStart("Loading.....");
             },
         }).done(function (result) {
+            SpinnerPlugin.activityStop();
             $("#index").html(result);
         });
     });
@@ -326,32 +336,22 @@
             async: false,
             cache: false,
             beforeSend: function () {
-                $body = $("body");
-                $body.addClass("loading");
+                SpinnerPlugin.activityStart("Loading.....");
             },
             success: function (data, status, xhr) {
+                SpinnerPlugin.activityStop();
                 var json = JSON.parse(data);
                 if (json.success === 'success') {
-                    $body = $("body");
-                    $body.removeClass("loading");
                     $("#myModal").toggle();
-                    $.ajax({
-                        url: "http://3damazing.co.za/users/complaints",
-                        async: false
-                    }).done(function (result) {
-                        $("#index").html(result);
-                    });
                     $(".comp-msg").html('<div class="alert alert-success"><strong>Success!</strong> Complaint has been submitted successfully.</div>');
+                    $("#index").html(result);
                 }
                 if (json.msg === 'error') {
-                    $body = $("body");
-                    $body.removeClass("loading");
                     $(".comp-msg").html('<div class="alert alert-danger"><strong>Error!</strong> Incorrect email or password.</div>');
                 }
             },
             error: function (data, status, xhr) {
-                $body = $("body");
-                $body.removeClass("loading");
+                SpinnerPlugin.activityStop();
                 $(".comp-msg").html('<div class="alert alert-warning"><strong>Error!</strong> Please check your internet connection.</div>');
             }
         });
@@ -369,16 +369,17 @@
             async: false,
             cache: false,
             beforeSend: function () {
-                $body = $("body");
-                $body.addClass("loading");
+                SpinnerPlugin.activityStart("Loading.....");
             },
             success: function (data, status, xhr) {
+                SpinnerPlugin.activityStop();
                 var json = JSON.parse(data);
                 if (json.success === 'success') {
                     $(".comp-msg").html('<div class="alert alert-success"><strong>Success!</strong> Comment has been submitted successfully.</div>');
                 }
             },
             error: function (data, status, xhr) {
+                SpinnerPlugin.activityStop();
                 $(".comp-msg").html('<div class="alert alert-warning"><strong>Error!</strong>An error occured, please try again.</div>');
             }
         });
