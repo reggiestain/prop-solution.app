@@ -1,0 +1,42 @@
+{
+  "name": "com.coolappz.prop_solution",
+  "version": "1.0.0",
+  "displayName": "Prop Solution",
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-whitelist": {},
+      "cordova-plugin-camera": {},
+      "cordova-plugin-dialogs": {},
+      "cordova-plugin-spinner": {},
+      "cordova-plugin-screen-orientation": {},
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-android-fingerprint-auth": {},
+      "cordova-plugin-deviceinformation": {},
+      "cordova-plugin-permission": {},
+      "cordova-plugin-sim": {},
+      "cordova-plugin-android-permissions": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-pdf-generator": {}
+    }
+  },
+  "dependencies": {
+    "8": "0.0.1",
+    "cordova-android": "^7.1.4",
+    "cordova-pdf-generator": "^2.0.4",
+    "cordova-plugin-android-fingerprint-auth": "^1.5.0",
+    "cordova-plugin-android-permissions": "^1.0.0",
+    "cordova-plugin-camera": "~2.0.0",
+    "cordova-plugin-deviceinformation": "^2.0.2",
+    "cordova-plugin-dialogs": "~1.3.0",
+    "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-network-information": "^2.0.1",
+    "cordova-plugin-permission": "^0.1.0",
+    "cordova-plugin-screen-orientation": "~1.4.2",
+    "cordova-plugin-sim": "^1.3.3",
+    "cordova-plugin-spinner": "~1.1.0",
+    "cordova-plugin-whitelist": "1"
+  }
+}

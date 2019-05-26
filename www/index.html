@@ -5,19 +5,25 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
-        <meta name="theme-color" content="#0000FF">
-        <meta name="msapplication-navbutton-color" content="#0000FF">
-        <meta name="apple-mobile-web-app-status-bar-style" content="#0000FF">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="stylesheet" type="text/css" href="./css/boot.css"/>
-        <link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="./css/style.css"/>
-        <!--<link href="./css/DataTable.css" rel="stylesheet">--> 
-        <link href="./css/navbar-fixed-top.css" rel="stylesheet">  
-        <link href="./css/comp.css" rel="stylesheet">
-    </head>    
+        <!--===============================================================================================-->	
+        <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+        <!--===============================================================================================-->	
+        <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+        <!--===============================================================================================-->
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <!--===============================================================================================-->
+    </head>
     <body>
         <style> 
             .glyphicon{
@@ -45,155 +51,267 @@
             body.loading .modal {
                 display: block;
             }   
-        </style>
-        <div id="log-div" class="container"> 
-            <div class="modal"></div>
-            <div id="error-msg"></div>
-            <p style="text-align: right;font-weight: bold">Version 1.0</p>
-            <img src="img/logo.png" class="img-responsive center-block"/>
-            <div class="col-lg-12">
-                <p id="profile-name" class="profile-name-card"></p>
-                <form id="signup" class="form-register" style="display: none">
-                    <span id="reauth-mail" class="reauth-email"></span>
-                    <input type="text" id="phone" class="form-control" placeholder="Cell number" required autofocus><br>
-                    <input type="email" id="mail" class="form-control" placeholder="Email address" required autofocus><br>
-                    <input type="password" id="pas" class="form-control" placeholder="Password" required>
-                    <div id="remember" class="checkbox">
-                        <!--<label>
-                            <input type="checkbox" value="remember-me"> Remember me
-                        </label>-->
-                    </div>                                
-                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Register</button>
-                    <a class="btn btn-lg btn-success btn-block toggle-1">Sign In</a>
-                </form><!-- /form -->
-                <div class="login-msg"></div>
-                <form id="login" class="form-signin">
-                    <span id="reauth-email" class="reauth-email"></span>
-                    <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus><br>
-                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-                    <div id="remember" class="checkbox">
-                        <div id="remember" class="checkbox">
-                            <a href="#" class="forgot-password">
-                                Forgot the password?
-                            </a> 
-                        </div>  
-                    </div>                                
-                    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
-                    <!--<a class="btn btn-lg btn-success btn-block toggle-1">Register</a>-->
-                </form><!-- /form --> 
 
+        </style>
+        <div class="limiter">
+            <div class="container-login100" style="background-image: url('images/img-01.jpg');">
+                <div class="wrap-login100 p-t-190 p-b-30">                            
+                    <p style="text-align: right;font-weight: bold">Version 1.0</p>
+
+                    <div class="login100-form-avatar">
+                        <img src="images/logo.png" alt="logo">
+                    </div>
+
+                    <span class="login100-form-title p-t-20 p-b-45">
+                        Prop Solution
+                    </span>
+                    <div class="login-msg"></div>
+                    <!--<div class="wrap-input100 validate-input m-b-10" data-validate = "Usernamedata is required">
+                       <input class="input100" type="text" name="email" placeholder="Username">
+                       <span class="focus-input100"></span>
+                       <span class="symbol-input100">
+                           <i class="fa fa-user"></i>
+                       </span>
+                   </div>
+
+                   <div class="wrap-input100 validate-input m-b-10" data-validate = "Password is required">
+                       <input class="input100" type="password" name="password" placeholder="Password">
+                       <span class="focus-input100"></span>
+                       <span class="symbol-input100">
+                           <i class="fa fa-lock"></i>
+                       </span>
+                   </div>-->
+                    <div class="scan">
+                        <div style="font-size:16px;font-weight:bold">Log in with your fingerprint scanner.</div>
+                        <div class="container-login100-form-btn p-t-10">
+                            <button type="button" class="login100-form-btn print">
+                                Login
+                            </button>
+                        </div>
+                    </div>
+                    <form id="login" class="login100-form validate-form">
+                        <div id="pin-code" class="text-center w-full p-t-20 p-b-" style="display:none">
+                            <input name="email" type="email" style="text-align:center" class="form-control" placeholder="Enter Email" required>
+                            <br>
+                            <input name="password" style="text-align:center" class="form-control" placeholder="Enter PIN"
+                                   oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                   type = "number"
+                                   maxlength = "6"
+                                   required>
+                            <div class="container-login100-form-btn p-t-10">
+                                <button type="submit" class="login100-form-btn">
+                                    Login
+                                </button>
+                            </div>
+                    </form>
+                    <div class="text-center w-full p-t-20 p-b-45">    
+                        <a href="#" class="txt1 print" style="font-size:16px;font-weight:bold">
+                            Log in with your fingerprint.
+                        </a>
+                    </div>
+                </div>
+                <div class="text-center w-full p-t-20 p-b-45 pin-c">
+                    <a href="#" id="pin" class="txt1" style="font-size:16px;font-weight:bold">
+                        Or use your App PIN <span class="fa fa-arrow-right"></span>
+                    </a>
+                </div>
+                <!--<div class="text-center w-full">
+                        <a class="txt1" href="#">
+                                Create new account
+                                <i class="fa fa-long-arrow-right"></i>						
+                        </a>
+                </div>-->            
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="cordova_plugin.js"></script>
-        <script src="js/jquery.min.js"></script>
-        <script src="js/custom.js"></script>
-        <!--<script src="s/jquery-mobile.js"></script>-->
-        <script src="js/bootstrap.min.js"></script>
-        <!--<script src="js/DataTable.min.js"></script>-->
-        <script>
-            $(document).ready(function () {
-                //screen.lockOrientation('portrait');
-                $('.toggle-1').click(function () {
-                    //$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-                    //navigator.notification.alert();  
-                    var message = "I am Alert Dialog!";
-                    var title = "ALERT";
-                    var buttonName = "Alert Button";
+    </div>
+    <!--===============================================================================================-->	
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="cordova_plugin.js"></script>                      
+    <script src="js/pin.js"></script>
+    <!--<script src="js/custom.js"></script>
+    <!--<script src="s/jquery-mobile.js"></script>-->
+    <!--<script src="js/DataTable.min.js"></script>-->
+    <script>
+        $(document).ready(function () {
 
+            var host = 'https://eca2d35e.ngrok.io';
+
+            $('#pin').click(function () {
+                $("#pin-code").show()
+                $(".scan, .pin-c").slideToggle()
+            })
+
+            $(".print").click(function () {
+                scan();
+            });
+
+            document.addEventListener("deviceready", function (e) {
+                console.log(navigator.connection.type);
+                document.addEventListener("offline", function (e) {
+                    //alert("NO_NETWORK");
+                    var message = "There's no internet connection. Please try again.";
+                    var title = "Warning!";
+                    var buttonName = "RETRY";
                     navigator.notification.alert(message, alertCallback, title, buttonName);
-
                     function alertCallback() {
-                        console.log("Alert is Dismissed!");
+                        restartApplication();
+                        location.reload();
                     }
+                }, false);
+
+                function successCallback(result) {
+                    console.log(result);
+                }
+
+                function errorCallback(error) {
+                    console.log(error);
+                }
+                // Android only: check permission                                   
+                window.plugins.sim.hasReadPermission(successCallback, errorCallback);
+
+                $(document).on('click', '#cont', function () {                    
+                    //var href = $('.c-pdf').attr('var');
+                    //PDFViewer.openPDF(host+'/Api/download_contract/8');
+                    //cordova.InAppBrowser.open(host+'/Api/download_contract/8', 'location=no');
+                    window.open('https://docs.google.com/viewer?url='+host+'/Api/download_contract/8&embedded=true', '_blank', 'location=yes');
                 });
 
-                $("#login").submit(function (e) {
-                    e.preventDefault();
-                    //alert('hhhhh');
-                    //var email = $("#email").val();
-                    //var pass = $("#pass").val();
-                    // var dataString = "&email=" + email + "&pass=" + pass + "&signin=";
-                    var dataString = $("#login").serialize();
-                    //if ($.trim(email).length > 0 & $.trim(pass).length > 0) {
-                    $.ajax({
-                        type: "POST",
-                        url: 'http://3damazing.co.za/users/applogin',
-                        data: dataString,
-                        crossDomain: true,
-                        async: false,
-                        cache: false,
-                        beforeSend: function () {
-                            var options = {dimBackground: true};
-                            SpinnerPlugin.activityStart("Signin.....");
-                        },
-                        success: function (data, status, xhr) {
-                            SpinnerPlugin.activityStop();
-                            var json = JSON.parse(data);
-                            if (json.tenant === 'tenant') {
-                                $('#log-div').hide();
-                                $('body').load('home.html', function () {
-                                    //$('.left-menu-bar-btn').html('<span class="glyphicon glyphicon-arrow-left"></span>');
-                                    var tenant = json.tenantid;
-                                    $("#user").val(json.user);
-                                    $("#tenantid").val(json.tenantid);
-                                    $("#prop").val(json.prop);
-                                    $.ajax({
-                                        type: "POST",
-                                        url: "http://3damazing.co.za/users/app_property/" + tenant,
-                                        async: false,
-                                        beforeSend: function () {
-                                            //$("#index").html('<span class="fa fa-spinner"></span>');  
+            }, false);
 
-                                        },
-                                        success: function (result, status, xhr) {
-                                            $("#index").html(result);
-                                        },
-                                        error: function (data, status, xhr) {
-                                            alert(xhr);
-                                        }
-                                    });
-                                });
-                            } else {
+            function scan() {
+                var result;
+                //deviceInfo = cordova.require("cordova-plugin-deviceinformation.DeviceInformation");
+                var re = window.plugins.sim.getSimInfo(devSuc, devErr)
+                //alert(re);
 
-                                $(".login-msg").html('<div class="alert alert-danger"><strong>Error!</strong> Incorrect email or password.</div>');
-                            }
-                        },
-                        error: function (data, status, xhr) {
-                            SpinnerPlugin.activityStop();
-                            $(".login-msg").html('<div class="alert alert-warning"><strong>Error!</strong> Please check your internet connection.</div>');
-                        }
-                    });
-                });
-                $("#signup").click(function () {
-                    var email = $("#mail").val();
-                    var pass = $("#pas").val();
-                    var phone = $("#phone").val();
-                    var dataString = "&email=" + email + "&pass=" + pass + "&phone=" + phone + "&signin=";
-                    if ($.trim(email).length > 0 & $.trim(pass).length > 0 & $.trim(phone).length > 0) {
-                        $.ajax({
-                            type: "POST",
-                            url: 'http://3damazing.co.za/users/appsignup',
-                            data: dataString,
-                            crossDomain: true,
-                            cache: false,
-                            beforeSend: function () {
-                                //alert('Connecting...');
-                            },
-                            success: function (data) {
-                                if (data = "alreadyregistered") {
-                                    alert("Sorry the email address has already been registered.");
-                                } else if (data = "exist") {
-                                    alert("Hey! You alreay has account! you can login with us");
-                                } else if (data = "failed") {
-                                    alert("Something Went wrong");
-                                }
-                            }
-                        });
+                function devSuc(result) {
+                    var result = result;
+                }
+                function devErr() {
+                    alert("error");
+                }
+
+
+                FingerprintAuth.isAvailable(isAvailableSuccess, isAvailableError);
+                function isAvailableSuccess(result) {
+                    if (result.isAvailable) {
+                        var encryptConfig = {
+                            clientId: "myAppName",
+                            username: "currentUser",
+                            password: "currentUserPassword"
+                        };
+                        FingerprintAuth.encrypt(encryptConfig, successCallback, errorCallback);
                     }
-                    return false;
+                }
+
+                function isAvailableError(message) {
+                    alert("isAvailableError(): " + message);
+                }
+
+                function successCallback(result) {
+                    if (result.withFingerprint) {
+                        //alert(JSON.stringify(result));
+                        $('body').load('web/main.html');
+                    } else if (result.withBackup) {
+                        $('body').load('home.html');
+                    }
+                }
+
+                function errorCallback(error) {
+                    if (error === FingerprintAuth.ERRORS.FINGERPRINT_CANCELLED) {
+                        console.log("FingerprintAuth Dialog Cancelled!");
+                    } else {
+                        console.log("FingerprintAuth Error: " + error);
+                    }
+                }
+
+            }
+
+            function restartApplication() {
+                // Show splash screen (useful if your app takes time to load) 
+                location.reload();
+            }
+
+            document.addEventListener('touchmove', function (e) {
+                e.preventDefault();
+            }, false);
+            //screen.lockOrientation('portrait');
+            $('.toggle-1').click(function () {
+                //$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+                //navigator.notification.alert();  
+                var message = "I am Alert Dialog!";
+                var title = "ALERT";
+                var buttonName = "Alert Button";
+
+                navigator.notification.alert(message, alertCallback, title, buttonName);
+
+                function alertCallback() {
+                    console.log("Alert is Dismissed!");
+                }
+            });
+
+            $("#login").submit(function (e) {
+                e.preventDefault();
+                var formData = $("#login").serialize();
+                $.ajax({
+                    type: "POST",
+                    url: host + '/Api/login',
+                    data: formData,
+                    crossDomain: true,
+                    async: false,
+                    cache: false,
+                    beforeSend: function () {
+                        var options = {dimBackground: true};
+                        SpinnerPlugin.activityStart("Loging in.....");
+                    },
+                    success: function (data, status, xhr) {
+                        SpinnerPlugin.activityStop();
+                        $('body').html(data);
+                    },
+                    error: function (data, status, xhr) {
+                        SpinnerPlugin.activityStop();
+                        $(".login-msg").html('<div class="alert alert-danger"><strong>Error!</strong> Please check your internet connection.</div>');
+                    }
                 });
             });
-        </script> 
-    </body>
+            $("#signup").click(function () {
+                var email = $("#mail").val();
+                var pass = $("#pas").val();
+                var phone = $("#phone").val();
+                var dataString = "&email=" + email + "&pass=" + pass + "&phone=" + phone + "&signin=";
+                if ($.trim(email).length > 0 & $.trim(pass).length > 0 & $.trim(phone).length > 0) {
+                    $.ajax({
+                        type: "POST",
+                        url: 'https://abfdb8a9.ngrok.io/users/appsignup',
+                        data: dataString,
+                        crossDomain: true,
+                        cache: false,
+                        beforeSend: function () {
+                            //alert('Connecting...');
+                        },
+                        success: function (data) {
+                            if (data = "alreadyregistered") {
+                                alert("Sorry the email address has already been registered.");
+                            } else if (data = "exist") {
+                                alert("Hey! You alreay has account! you can login with us");
+                            } else if (data = "failed") {
+                                alert("Something Went wrong");
+                            }
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    </script> 
+
+</body>
 </html>
